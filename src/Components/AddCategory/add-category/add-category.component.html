@@ -1,1 +1,9 @@
-<p>add-category works!</p>
+<div class="container">
+    <h2>Add New Category</h2>
+    <form novalidate  #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)" class="form">
+          <input type="text" name="Category Name" [(ngModel)] = "model.categoryName" placeholder="Category Name" required>
+          <button type="submit" class="btn">Add</button>
+    </form>
+</div>
+
+

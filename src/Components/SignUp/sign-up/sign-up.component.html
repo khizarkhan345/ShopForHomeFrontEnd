@@ -1,1 +1,15 @@
-<p>sign-up works!</p>
+<div class="container">
+    <h2>Sign Up</h2>
+    <form novalidate  #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" class="form">
+          <input type="text" name="firstName" [(ngModel)] = "model.firstName" placeholder="First Name" required>
+          <input type="text" name="lastName" [(ngModel)] = "model.lastName"  placeholder="Last Name" required>
+          <input type="text" name="email" [(ngModel)] = "model.email"  placeholder="Email" required>
+          <input type="password" name="password" [(ngModel)] = "model.password"  placeholder="Password" required>
+          <select  name="role" [(ngModel)] = "model.role">
+            <option *ngFor="let r of model.role" [ngValue]="r" >{{r}}</option>
+          </select>
+          <button type="submit" class="btn">Sign Up</button>
+    </form>
+</div>
+
+
