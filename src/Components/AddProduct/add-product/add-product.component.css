@@ -1,6 +1,6 @@
 /* Container styles */
 .container {
-    width: 400px;
+    width: 700px;
     margin: 50px auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -41,7 +41,7 @@
 /* Textarea specific styles */
 .form textarea {
     resize: vertical;
-    height: 100px;
+    height: 300px;
 }
 
 /* Button styles */
