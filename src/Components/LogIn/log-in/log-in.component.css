@@ -17,6 +17,13 @@
     color: #333;
 }
 
+.container h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+    color: red;
+}
+
 /* Form styles */
 .form {
     display: flex;

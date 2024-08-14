@@ -1,1 +1,29 @@
-<p>display-categories works!</p>
+<div>
+    <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Category Name</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let category of Categories">
+              <td>{{category.categoryId}}</td>
+              <td>{{category.categoryName}}</td>
+              <td>
+                <div>
+                  <button class="edit-btn" (click)="editCategory(category.categoryId)">Edit</button>
+                  <button class="delete-btn" (click)="deleteCategory(category.categoryId)">Delete</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    
+      </div>
+      
+     
+    
+    </div>

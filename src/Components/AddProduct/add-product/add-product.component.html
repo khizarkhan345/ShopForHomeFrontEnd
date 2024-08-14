@@ -6,11 +6,10 @@
           </textarea>
           <input type="number" name="price" [(ngModel)] = "model.price"  placeholder="Price" required>
           <input type="number" name="stock" [(ngModel)] = "model.stock"  placeholder="Stock" required>
-          <select  name="category" [(ngModel)] = "model.categoryId">
-            <option [ngValue]="'Home & Kitchen'" >Home & Kitchen</option>
-            <option [ngValue]="'Sports & Outdoor'" >Sports & Outdoor</option>
+          <select  name="categoryId" [(ngModel)] = "model.categoryId">
+            <option *ngFor="let category of Categories" [ngValue]="category.categoryId" >{{category.categoryName}}</option>
           </select>
-          <input type="file" (change)="onFileSelected($event)" accept="image/*">
+          <input type="file" (change)="onFileSelected($event)" accept="image/*" placeholder="Image">
           <button type="submit" class="btn">Add</button>
     </form>
 </div>
