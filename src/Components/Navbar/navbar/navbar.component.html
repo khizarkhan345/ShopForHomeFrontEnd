@@ -1,21 +1,48 @@
 <nav>
   <ul>
-    <li><a routerLink="/home">Home</a></li>
-    <li><a routerLink="/cart">Cart</a></li>
-    <li><a routerLink="/wishlist">Wishlist</a></li>
-    <li><a routerLink="/users">Users</a></li>
-    <li><a routerLink="/users">Users</a></li>
-    <li><a routerLink="/products">Products</a></li>
-    <li><a routerLink="/categories">Categories</a></li>
-    <li><a routerLink="/sales">Sales</a></li>
-    <li><a routerLink="/adduser">Add User</a></li>
-    <li><a routerLink="/edituser/id"></a></li>
-    <li><a routerLink="/addproduct">Add Product</a></li>
-    <li><a routerLink="/editproduct/id"></a></li>
-    <li><a routerLink="/addcategory">Add Category</a></li>
-    <li><a routerLink="/editcategory/id"></a></li>
-    <li><a routerLink="/login">Log In</a></li>
-    <li><a routerLink="/signup">Sign Up</a></li>
-    <li><a routerLink="/login" class="logOut"></a></li>
+    <li *ngIf="isLoggedIn && userRole === 'customer'">
+      <a routerLink="/home">Home</a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'customer'">
+      <a routerLink="/cart">Cart</a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'customer'">
+      <a routerLink="/wishlist">Wishlist</a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'admin'">
+      <a routerLink="/users">Users</a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'admin'">
+      <a routerLink="/products">Products</a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'admin'">
+      <a routerLink="/categories">Categories</a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'admin'">
+      <a routerLink="/sales">Sales</a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'admin'">
+      <a routerLink="/adduser">Add User</a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'admin'">
+      <a routerLink="/edituser/id"></a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'admin'">
+      <a routerLink="/addproduct">Add Product</a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'admin'">
+      <a routerLink="/editproduct/id"></a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'admin'">
+      <a routerLink="/addcategory">Add Category</a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'admin'">
+      <a routerLink="/editcategory/id"></a>
+    </li>
+    <li *ngIf="isLoggedIn === false"><a routerLink="/login">Log In</a></li>
+    <li *ngIf="isLoggedIn === false"><a routerLink="/signup">Sign Up</a></li>
+    <li *ngIf="isLoggedIn">
+      <a routerLink="/login" class="logOut" (click)="handleLogOut()">Log Out</a>
+    </li>
   </ul>
 </nav>
