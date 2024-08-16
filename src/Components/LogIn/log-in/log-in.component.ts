@@ -31,20 +31,30 @@ export class LogInComponent {
        if(response){
         console.log(response);
         if(response.password === logInForm.value.password && response.role.toLowerCase() === logInForm.value.role.toLowerCase()){
-          const userData:any = {
+         
+
+         
+          if(response.role.toLowerCase() === 'admin'){
+             const userData:any = {
             userId: response.userId,
             firstName: response.firstName,
             lastName: response.lastName,
             email: response.email,
-            role: response.role,
-            cartId: response.cartId,
-            wishlistId: response.wishlistId,
+            role: response.role
           }
-
           this.userService.login(userData);
-          if(response.role.toLowerCase() === 'admin'){
             this.router.navigate(["/users"]);
           }else{
+            const userData:any = {
+              userId: response.userId,
+              firstName: response.firstName,
+              lastName: response.lastName,
+              email: response.email,
+              role: response.role,
+              cartId: response.cart.cartId,
+              wishlistId: response.wishlist.wishlistId,
+            }
+            this.userService.login(userData);
             this.router.navigate(["/home"]);
           }
           
