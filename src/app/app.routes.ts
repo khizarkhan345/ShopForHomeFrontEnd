@@ -11,22 +11,27 @@ import { DisplaySalesComponent } from '../Components/DisplaySales/display-sales/
 import { HomeComponent } from '../Components/Home/home/home.component';
 import { AddtocartComponent } from '../Components/AddToCart/addtocart/addtocart.component';
 import { WishlistComponent } from '../Components/Wishlist/wishlist/wishlist.component';
+import { AuthGuard } from '../AuthGuard/AuthGuard.guard';
+import { AdminGuard } from '../AuthGuard/AdminGuard.guard';
+import { CustomerGuard } from '../AuthGuard/CustomerGuard.guard';
+
+
 export const routes: Routes = [
     {path: 'login', component: LogInComponent},
     {path: '', redirectTo: 'login', pathMatch: 'full'},
-    {path: 'home', component: HomeComponent},
-    {path: 'cart', component: AddtocartComponent},
-    {path: 'wishlist', component: WishlistComponent},
-    {path: 'users', component: DisplayUsersComponent},
-    {path: 'products', component: DisplayProductsComponent },
-    {path: 'categories', component: DisplayCategoriesComponent},
-    {path: 'sales', component: DisplaySalesComponent},
-    {path: 'adduser', component: AddUserComponent},
-    {path: 'edituser/:id', component: AddUserComponent},
-    {path: 'addproduct', component: AddProductComponent},
-    {path: 'editproduct/:id', component: AddProductComponent},
-    {path: 'addcategory', component: AddCategoryComponent},
-    {path: 'editcategory/:id', component: AddCategoryComponent},
+    {path: 'home', component: HomeComponent, canActivate: [AuthGuard, CustomerGuard]},
+    {path: 'cart', component: AddtocartComponent, canActivate: [AuthGuard, CustomerGuard]}, 
+    {path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard, CustomerGuard]},
+    {path: 'users', component: DisplayUsersComponent, canActivate: [AuthGuard, AdminGuard]},
+    {path: 'products', component: DisplayProductsComponent, canActivate: [AuthGuard, AdminGuard] },
+    {path: 'categories', component: DisplayCategoriesComponent, canActivate: [AuthGuard, AdminGuard]},
+    {path: 'sales', component: DisplaySalesComponent, canActivate: [AuthGuard, AdminGuard]},
+    {path: 'adduser', component: AddUserComponent, canActivate: [AuthGuard, AdminGuard]},
+    {path: 'edituser/:id', component: AddUserComponent, canActivate: [AuthGuard, AdminGuard]},
+    {path: 'addproduct', component: AddProductComponent, canActivate: [AuthGuard, AdminGuard]},
+    {path: 'editproduct/:id', component: AddProductComponent, canActivate: [AuthGuard, AdminGuard]},
+    {path: 'addcategory', component: AddCategoryComponent, canActivate: [AuthGuard, AdminGuard]},
+    {path: 'editcategory/:id', component: AddCategoryComponent, canActivate: [AuthGuard, AdminGuard]},
     {path: 'signup', component: SignUpComponent}
 ];
 

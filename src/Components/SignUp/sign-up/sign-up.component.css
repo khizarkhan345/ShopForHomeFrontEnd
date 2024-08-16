@@ -57,6 +57,20 @@
     background-color: #218838;
 }
 
+.signup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.signup p {
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.signup a {
+    font-weight: 600;
+}
+
 /* Placeholder text styles */
 ::placeholder {
     color: #888;

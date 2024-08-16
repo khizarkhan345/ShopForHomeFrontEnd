@@ -62,6 +62,20 @@
     color: #888;
 }
 
+.login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login p {
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.login a {
+    font-weight: 600;
+}
 /* Media query for mobile responsiveness */
 @media (max-width: 500px) {
     .container {
