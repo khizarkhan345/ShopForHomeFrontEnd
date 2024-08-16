@@ -2,16 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { CartDataService } from '../../../DataServices/CartDataService/cartdata.service';
 import { USER_TOKEN } from '../../../DataServices/UserDataService/userdata.service';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { CartitemComponent } from '../../CartItem/cartitem/cartitem.component';
 @Component({
   selector: 'app-addtocart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [FormsModule, CommonModule, CartitemComponent],
   templateUrl: './addtocart.component.html',
   styleUrl: './addtocart.component.css'
 })
 export class AddtocartComponent implements OnInit{
 
      CartData: any = {};
+
+     isEditEnabled: boolean = false;
+
+     newQuantity: number = 0;
      constructor(private cartService: CartDataService){
 
      }
@@ -21,8 +27,8 @@ export class AddtocartComponent implements OnInit{
        
         if(token){
           console.log(JSON.parse(token));
-          const cartId = JSON.parse(token).cartId;
-          console.log(cartId);
+          const cartId = JSON.parse(token).cart.cartId;
+          
           this.cartService.getAllCartItems(cartId).subscribe(
             (response) => {
               console.log(response);
@@ -40,12 +46,6 @@ export class AddtocartComponent implements OnInit{
       console.log("Handle Checkout is clicked");
      }
 
-     editCartItem(id: string){
-      console.log(id);
-     }
-
-     deleteCartItem(id: string){
-      console.log(id);
-     }
+    
 
 }

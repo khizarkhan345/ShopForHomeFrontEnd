@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CartDataService {
+export class WishlistDataService {
 
   private URL = "http://localhost:8080/api/cart";
 
@@ -44,3 +44,4 @@ export class CartDataService {
    }
 
 }
+

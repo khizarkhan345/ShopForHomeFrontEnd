@@ -2,7 +2,7 @@
   <div *ngIf="CartData.length == 0">
     <h2 class="cart-message">Cart is Empty</h2>
   </div>
-  <div class="table-container" *ngIf="CartData.length > 0">
+  <div class="table-container">
     <table>
       <thead>
         <tr>
@@ -14,30 +14,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let cartItem of CartData">
-          <td>{{ cartItem.product.title }}</td>
-          <td>{{ cartItem.product.price }}</td>
-          <td>{{ cartItem.quantity }}</td>
-          <td>{{ cartItem.quantity * cartItem.product.price }}</td>
-          <td>
-            <div>
-              <button
-                class="edit-btn"
-                (click)="editCartItem(cartItem.cartItemId)"
-              >
-                Edit
-              </button>
-              <button
-                class="delete-btn"
-                (click)="deleteCartItem(cartItem.cartItemId)"
-              >
-                Delete
-              </button>
-            </div>
-          </td>
-        </tr>
+        <tr
+          app-cartitem
+          *ngFor="let CartItem of CartData"
+          [CartItem]="CartItem"
+        ></tr>
       </tbody>
     </table>
-    <button class="checkout-btn" (click)="handleCheck()">Check Out</button>
   </div>
+
+  <button class="checkout-btn" (click)="handleCheck()">Check Out</button>
 </div>
