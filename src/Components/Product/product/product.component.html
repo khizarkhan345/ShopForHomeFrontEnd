@@ -14,12 +14,12 @@
         min="1"
         class="quantity-input"
       />
-      <button class="add-to-cart-btn" (click)="addToCart(product)">
+      <button class="add-to-cart-btn" (click)="addToCart(product.productId)">
         Add to Cart
       </button>
       <button
         class="add-to-cart-btn add-to-wishlist-btn"
-        (click)="addToWishlist(product)"
+        (click)="addToWishlist(product.productId)"
       >
         Add to Wishlist
       </button>

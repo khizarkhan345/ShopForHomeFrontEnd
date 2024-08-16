@@ -1,0 +1,20 @@
+<td>{{ CartItem.product.title }}</td>
+<td>{{ CartItem.product.price }}</td>
+<td>{{ CartItem.quantity }}</td>
+<td *ngIf="isEditEnabled === true">
+  <input type="number" [(ngModel)]="newQuantity" min="1" />
+  <button (click)="handleUpdate(CartItem.cartItemId)" class="update-btn">
+    update
+  </button>
+</td>
+<td>{{ CartItem.quantity * CartItem.product.price }}</td>
+<td>
+  <div>
+    <button class="edit-btn" (click)="editCartItem(CartItem.cartItemId)">
+      Edit
+    </button>
+    <button class="delete-btn" (click)="deleteCartItem(CartItem.cartItemId)">
+      Delete
+    </button>
+  </div>
+</td>

@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CartDataService } from '../../../DataServices/CartDataService/cartdata.service';
+import { USER_TOKEN } from '../../../DataServices/UserDataService/userdata.service';
 @Component({
   selector: 'app-product',
   standalone: true,
@@ -13,11 +15,37 @@ export class ProductComponent {
 
   quantity: number = 1;
 
-  addToCart(product: any){
-   console.log(product);
+  constructor(private cartService: CartDataService){
+
   }
 
-  addToWishlist(product: any){
-    console.log(product);
+  addToCart(productId: string){
+    const token = localStorage.getItem(USER_TOKEN);
+
+    let cart: any = {};
+    if(token){
+       cart = JSON.parse(token).cart;
+    }
+   
+
+    const cartData = {
+       cart: cart,
+       productId: productId,
+       quantity: this.quantity
+    }
+
+    this.cartService.addItemToCart(cartData).subscribe(
+      (response) => {
+        console.log("Item added to cart", response);
+      },
+      (error) => {
+        console.log("Failed to add item to cart", error);
+      }
+    )
+   console.log(productId);
+  }
+
+  addToWishlist(productId: string){
+    console.log(productId);
   }
 }
