@@ -1,1 +1,24 @@
-<p>wishlist works!</p>
+<div>
+  <h1 class="cart-message">Wishlist Items</h1>
+  <div *ngIf="WishlistData.length == 0">
+    <h2 class="cart-message">Wishlist is Empty</h2>
+  </div>
+  <div class="table-container" *ngIf="WishlistData.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Unit Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          app-wishlist-item
+          *ngFor="let product of WishlistData"
+          [product]="product"
+        ></tr>
+      </tbody>
+    </table>
+  </div>
+</div>

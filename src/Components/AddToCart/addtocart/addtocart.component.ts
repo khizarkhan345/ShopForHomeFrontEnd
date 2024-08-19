@@ -4,6 +4,7 @@ import { USER_TOKEN } from '../../../DataServices/UserDataService/userdata.servi
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CartitemComponent } from '../../CartItem/cartitem/cartitem.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-addtocart',
   standalone: true,
@@ -18,7 +19,7 @@ export class AddtocartComponent implements OnInit{
      isEditEnabled: boolean = false;
 
      newQuantity: number = 0;
-     constructor(private cartService: CartDataService){
+     constructor(private cartService: CartDataService, private router: Router){
 
      }
 
@@ -44,6 +45,7 @@ export class AddtocartComponent implements OnInit{
 
      handleCheck(){
       console.log("Handle Checkout is clicked");
+      this.router.navigate(["/checkout"]);
      }
 
     

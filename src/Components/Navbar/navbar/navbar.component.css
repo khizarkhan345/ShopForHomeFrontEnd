@@ -39,3 +39,7 @@ nav {
   .logout {
     margin-left: 1200px;
   }
+
+  .link-Hidden {
+    pointer-events: none;
+  }

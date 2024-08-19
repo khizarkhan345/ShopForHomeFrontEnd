@@ -11,6 +11,9 @@ import { DisplaySalesComponent } from '../Components/DisplaySales/display-sales/
 import { HomeComponent } from '../Components/Home/home/home.component';
 import { AddtocartComponent } from '../Components/AddToCart/addtocart/addtocart.component';
 import { WishlistComponent } from '../Components/Wishlist/wishlist/wishlist.component';
+import { CheckoutComponent } from '../Components/Checkout/checkout/checkout.component';
+import { CouponComponent } from '../Components/Coupon/coupon/coupon.component';
+import { DisplayCouponsComponent } from '../Components/DisplayCoupons/display-coupons/display-coupons.component';
 import { AuthGuard } from '../AuthGuard/AuthGuard.guard';
 import { AdminGuard } from '../AuthGuard/AdminGuard.guard';
 import { CustomerGuard } from '../AuthGuard/CustomerGuard.guard';
@@ -22,10 +25,13 @@ export const routes: Routes = [
     {path: 'home', component: HomeComponent, canActivate: [AuthGuard, CustomerGuard]},
     {path: 'cart', component: AddtocartComponent, canActivate: [AuthGuard, CustomerGuard]}, 
     {path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard, CustomerGuard]},
+    {path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard, CustomerGuard]},
     {path: 'users', component: DisplayUsersComponent, canActivate: [AuthGuard, AdminGuard]},
     {path: 'products', component: DisplayProductsComponent, canActivate: [AuthGuard, AdminGuard] },
     {path: 'categories', component: DisplayCategoriesComponent, canActivate: [AuthGuard, AdminGuard]},
     {path: 'sales', component: DisplaySalesComponent, canActivate: [AuthGuard, AdminGuard]},
+    {path: 'coupons', component: DisplayCouponsComponent, canActivate: [AuthGuard, AdminGuard]},
+    {path: 'createcoupons', component: CouponComponent, canActivate: [AuthGuard, AdminGuard]},
     {path: 'adduser', component: AddUserComponent, canActivate: [AuthGuard, AdminGuard]},
     {path: 'edituser/:id', component: AddUserComponent, canActivate: [AuthGuard, AdminGuard]},
     {path: 'addproduct', component: AddProductComponent, canActivate: [AuthGuard, AdminGuard]},

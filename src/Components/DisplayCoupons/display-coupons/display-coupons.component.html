@@ -1,0 +1,35 @@
+<div>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Coupon Code</th>
+          <th>Coupon Percentage</th>
+          <th>Users</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let coupon of coupons">
+          <td>{{ coupon.couponCode }}</td>
+          <td>{{ coupon.couponPercentage }}</td>
+          <td>
+            <div *ngFor="let user of coupon.usersName">
+              <p>{{ user }}</p>
+            </div>
+          </td>
+          <td>
+            <div>
+              <button
+                class="delete-btn"
+                (click)="deleteCoupon(coupon.couponId)"
+              >
+                Delete
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

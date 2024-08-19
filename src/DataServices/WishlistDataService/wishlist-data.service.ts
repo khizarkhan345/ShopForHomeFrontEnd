@@ -7,41 +7,32 @@ import { Observable } from 'rxjs';
 })
 export class WishlistDataService {
 
-  private URL = "http://localhost:8080/api/cart";
+  private URL = "http://localhost:8080/api/wishlist";
 
   constructor(private httpClient: HttpClient) { }
 
 
-  getAllCartItems(id: string): Observable<any> {
-    return this.httpClient.get<any[]>(this.URL+`/cartItems/${id}`);
+  getAllWishlistItems(id: string): Observable<any> {
+    return this.httpClient.get<any[]>(this.URL+`/wishlistItems/${id}`);
   }
 
 
-  // getASingleCategory(id: string): Observable<any> {
-  //   return this.httpClient.get<any[]>(this.URL+`/${id}`);
-  // }
-
-
-  addItemToCart(cartData: any): Observable<any> {
+  addItemToWishlist(WishlistData: any): Observable<any> {
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
 
-    return this.httpClient.post<any>(this.URL+'/cartItem/save', cartData, { headers });
+    return this.httpClient.post<any>(this.URL+'/save', WishlistData, { headers });
    }
 
-   removeItemFromCart(id: string): Observable<any> {
-    return this.httpClient.delete<any>(this.URL+`/cartItem/${id}`);
-   }
-
-   editCartItem(id: string, updateData: any): Observable<any> {
-     //console.log
-     const headers = new HttpHeaders({
+   removeItemFromWishlist(wishlistData: any, id: string): Observable<any> {
+    const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.httpClient.put<any>(this.URL+`/cartItem/${id}`, updateData, { headers});
+    return this.httpClient.put<any>(this.URL+`/${id}`, wishlistData, {headers});
    }
 
+   
 }
 

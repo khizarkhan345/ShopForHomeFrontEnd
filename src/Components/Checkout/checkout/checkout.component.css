@@ -1,0 +1,114 @@
+/* checkout.component.css */
+
+/* Container for the entire checkout page */
+.checkout-container {
+    width: 80%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Heading styles */
+  h2, h3 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Shipping Information Section */
+  .shipping-info {
+    margin-bottom: 30px;
+  }
+  
+  .shipping-info label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .shipping-info input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Product Information Section */
+  .product-info table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .product-info th, .product-info td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .product-info th {
+    background-color: #f4f4f4;
+  }
+  
+  .product-info .total-label {
+    text-align: right;
+    font-weight: bold;
+  }
+  
+  .product-info .total-value {
+    font-weight: bold;
+  }
+  
+  /* Coupon and Order Section */
+  .coupon-order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .coupon {
+    flex: 1;
+  }
+  
+  .coupon label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .coupon input[type="text"] {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 60%;
+  }
+  
+  .apply-btn {
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .apply-btn:hover {
+    background-color: #218838;
+  }
+  
+  /* Order Button */
+  .order-btn {
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .order-btn:hover {
+    background-color: #0056b3;
+  }
+  

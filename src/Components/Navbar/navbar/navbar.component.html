@@ -9,6 +9,9 @@
     <li *ngIf="isLoggedIn && userRole === 'customer'">
       <a routerLink="/wishlist">Wishlist</a>
     </li>
+    <li *ngIf="isLoggedIn && userRole === 'customer'" class="link-Hidden">
+      <a routerLink="/checkout"></a>
+    </li>
     <li *ngIf="isLoggedIn && userRole === 'admin'">
       <a routerLink="/users">Users</a>
     </li>
@@ -20,6 +23,9 @@
     </li>
     <li *ngIf="isLoggedIn && userRole === 'admin'">
       <a routerLink="/sales">Sales</a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'admin'">
+      <a routerLink="/coupons">Coupons</a>
     </li>
     <li *ngIf="isLoggedIn && userRole === 'admin'">
       <a routerLink="/adduser">Add User</a>
@@ -35,6 +41,9 @@
     </li>
     <li *ngIf="isLoggedIn && userRole === 'admin'">
       <a routerLink="/addcategory">Add Category</a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'admin'">
+      <a routerLink="/createcoupons">Create Coupon</a>
     </li>
     <li *ngIf="isLoggedIn && userRole === 'admin'">
       <a routerLink="/editcategory/id"></a>

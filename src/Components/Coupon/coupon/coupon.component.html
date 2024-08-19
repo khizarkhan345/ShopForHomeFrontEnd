@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>Create New Coupons</h2>
+  <form
+    novalidate
+    #couponForm="ngForm"
+    (ngSubmit)="onSubmit(couponForm)"
+    class="form"
+  >
+    <input
+      type="text"
+      name="couponCode"
+      [(ngModel)]="model.couponCode"
+      placeholder="Coupon Code"
+      required
+    />
+    <input
+      type="number"
+      name="couponPercentage"
+      [(ngModel)]="model.couponPercentage"
+      placeholder="Coupon Percentage"
+      required
+    />
+    <div class="user-selector">
+      <ul>
+        <li *ngFor="let user of Users">
+          <input
+            type="checkbox"
+            name="users"
+            [value]="user.userId"
+            [checked]="isSelected(user.userId)"
+            (change)="toggleSelection(user.userId)"
+          />
+          {{ user.firstName + user.lastName }}
+        </li>
+      </ul>
+    </div>
+
+    <button type="submit" class="btn">Create</button>
+  </form>
+</div>
