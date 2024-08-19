@@ -40,8 +40,9 @@ export class AddProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productId = this.route.snapshot.paramMap.get('id') || 'Not Found';
+    this.productId = this.route.snapshot.paramMap.get('id') || "Not Found";
 
+    console.log("ProductId", this.productId);
     this.categoryService.getAllCategories().subscribe(
       (response) => {
         this.Categories = response;
@@ -51,7 +52,8 @@ export class AddProductComponent implements OnInit {
       }
     );
 
-    if (this.productId) {
+    if (this.productId !== 'Not Found') {
+      console.log("Product Id inside if condition", this.productId);
       this.productService.getASingleProduct(this.productId).subscribe(
         (response) => {
           this.product = response;
@@ -109,7 +111,7 @@ export class AddProductComponent implements OnInit {
     console.log(this.model);
     //console.log(this.selectedFile);
 
-    if(this.product){
+    if(this.productId !== 'Not Found'){
       this.productService.editProduct(this.model, this.productId).subscribe(
         (response) => {
           console.log("Product Edited!", response);

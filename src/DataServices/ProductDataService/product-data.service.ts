@@ -41,6 +41,16 @@ export class ProductdataService {
     
    }
 
+   updateProductStock(product: any, id: string): Observable<any> {
+
+    //console.log
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.httpClient.put<any>(this.URL+`/updatestock/${id}`, product, { headers });
+    
+   }
+
    deleteProduct(id: String): Observable<any> {
     return this.httpClient.delete<any>(this.URL+`/${id}`);
    }

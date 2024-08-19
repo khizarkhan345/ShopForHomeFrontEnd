@@ -14,6 +14,7 @@ import { WishlistComponent } from '../Components/Wishlist/wishlist/wishlist.comp
 import { CheckoutComponent } from '../Components/Checkout/checkout/checkout.component';
 import { CouponComponent } from '../Components/Coupon/coupon/coupon.component';
 import { DisplayCouponsComponent } from '../Components/DisplayCoupons/display-coupons/display-coupons.component';
+import { OrderSuccessComponent } from '../Components/OrderSuccess/order-success/order-success.component';
 import { AuthGuard } from '../AuthGuard/AuthGuard.guard';
 import { AdminGuard } from '../AuthGuard/AdminGuard.guard';
 import { CustomerGuard } from '../AuthGuard/CustomerGuard.guard';
@@ -26,6 +27,7 @@ export const routes: Routes = [
     {path: 'cart', component: AddtocartComponent, canActivate: [AuthGuard, CustomerGuard]}, 
     {path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard, CustomerGuard]},
     {path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard, CustomerGuard]},
+    {path: 'ordersuccess', component: OrderSuccessComponent, canActivate: [AuthGuard, CustomerGuard]},
     {path: 'users', component: DisplayUsersComponent, canActivate: [AuthGuard, AdminGuard]},
     {path: 'products', component: DisplayProductsComponent, canActivate: [AuthGuard, AdminGuard] },
     {path: 'categories', component: DisplayCategoriesComponent, canActivate: [AuthGuard, AdminGuard]},
