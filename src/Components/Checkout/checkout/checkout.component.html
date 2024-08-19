@@ -9,18 +9,41 @@
       <input
         type="text"
         id="street-address"
+        [(ngModel)]="model.streetAddress"
+        [ngModelOptions]="{ standalone: true }"
         placeholder="Enter street address"
         required
       />
 
       <label for="city">City</label>
-      <input type="text" id="city" placeholder="Enter city" required />
+      <input
+        type="text"
+        id="city"
+        [(ngModel)]="model.city"
+        [ngModelOptions]="{ standalone: true }"
+        placeholder="Enter city"
+        required
+      />
 
       <label for="state">State</label>
-      <input type="text" id="state" placeholder="Enter state" required />
+      <input
+        type="text"
+        id="state"
+        [(ngModel)]="model.state"
+        [ngModelOptions]="{ standalone: true }"
+        placeholder="Enter state"
+        required
+      />
 
       <label for="zipcode">Zip Code</label>
-      <input type="text" id="zipcode" placeholder="Enter zip code" required />
+      <input
+        type="text"
+        id="zipcode"
+        [(ngModel)]="model.zipCode"
+        [ngModelOptions]="{ standalone: true }"
+        placeholder="Enter zip code"
+        required
+      />
     </form>
   </div>
 
@@ -55,9 +78,15 @@
 
   <!-- Coupon and Order Section -->
   <div class="coupon-order">
+    <h3>{{ couponMessage }}</h3>
     <div class="coupon">
       <label for="coupon">Have a coupon?</label>
-      <input type="text" id="coupon" placeholder="Enter coupon code" />
+      <input
+        type="text"
+        id="coupon"
+        placeholder="Enter coupon code"
+        [(ngModel)]="couponInput"
+      />
       <button class="apply-btn" (click)="handleCoupon()">Apply</button>
     </div>
     <button class="order-btn" (click)="handleOrder()">Place Order</button>
