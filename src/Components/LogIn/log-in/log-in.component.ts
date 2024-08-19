@@ -52,6 +52,7 @@ export class LogInComponent {
               email: response.email,
               role: response.role,
               cart: response.cart,
+              coupons: response.coupons,
               wishlistId: response.wishlist.wishlistId,
             }
             this.userService.login(userData);
