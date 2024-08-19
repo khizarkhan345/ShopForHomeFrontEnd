@@ -1,0 +1,9 @@
+<td>{{ product.title }}</td>
+<td>{{ product.price }}</td>
+<td>
+  <div>
+    <button class="delete-btn" (click)="deleteWishlistItem(product.productId)">
+      Remove
+    </button>
+  </div>
+</td>
