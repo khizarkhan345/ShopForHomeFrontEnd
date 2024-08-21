@@ -24,6 +24,8 @@ export class CheckoutComponent implements OnInit{
   couponInput: string = "";
 
   couponMessage: string = "";
+  errorMessage: string = "";
+
   token: any = {};
 
   totalValue: number = 0;
@@ -100,6 +102,16 @@ export class CheckoutComponent implements OnInit{
   handleOrder(){
     console.log(this.model);
 
+    if(this.model.streetAddress === "" || this.model.city === ""
+       || this.model.state === "" || this.model.zipCode === 0){
+        
+        this.errorMessage = "Address fields must not be null";
+
+        setTimeout(() => {
+          this.errorMessage = "";
+        }, 2000);
+        
+    }else{
     let userId = JSON.parse(this.token).userId;
 
     const date = new Date();
@@ -177,4 +189,5 @@ export class CheckoutComponent implements OnInit{
 
   }
 
+  }
 }

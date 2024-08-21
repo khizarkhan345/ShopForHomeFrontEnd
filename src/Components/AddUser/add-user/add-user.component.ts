@@ -16,8 +16,13 @@ export class AddUserComponent implements OnInit{
    
     userId!: string;
     user!: any;
+
+    errorMessage: string = "";
+
+    roles: string[] = ["admin", "customer"];
+    
     constructor(private userService: UserdataService, private router: Router, private route: ActivatedRoute){
-      this.model = new User('', '', '', '', ["admin", "customer"]);
+      this.model = new User('', '', '', '', '');
     }
 
    ngOnInit(): void {
@@ -45,6 +50,17 @@ export class AddUserComponent implements OnInit{
     onSubmit(userForm: any){
       console.log(userForm.value);
 
+      if(userForm.value.firstName === "" || userForm.value.lastName === "" || userForm.value.email === ""
+        || userForm.value.password === "" || userForm.value.role === ""
+      ){
+
+        this.errorMessage="Input field must not be null";
+        setTimeout(() => {
+           this.errorMessage = "";
+        }, 2000);
+
+      }else{
+
       if(this.user){
       
         this.userService.editUser(userForm.value, this.userId).subscribe(
@@ -69,5 +85,6 @@ export class AddUserComponent implements OnInit{
           }
         );
        }
+      }
     }
 }

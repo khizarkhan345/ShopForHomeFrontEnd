@@ -19,6 +19,8 @@ export class AddCategoryComponent implements OnInit{
    categoryId!: string;
    category!: any;
 
+   errorMessage: string = "";
+
    constructor(private categoryService: CategoryDataService, private router: Router, private route: ActivatedRoute){
     this.model = new Category("");
    }
@@ -55,33 +57,41 @@ export class AddCategoryComponent implements OnInit{
   
 
    onSubmit(categoryForm: any){
-     //console.log(categoryForm.value);
+     console.log(categoryForm.value);
 
-     
-     if(this.category){
-      
-      this.categoryService.editCategory(categoryForm.value, this.categoryId).subscribe(
-        (response) => {
-          console.log('Category Updated', response);
-          //this.employees.push(response);
-          this.router.navigate(["/categories"]);
-        },
-        (error) => {
-          console.log('Category Updation failed', error);
-        }
-      );
+     if(categoryForm.value.categoryName === ""){
+      this.errorMessage="Input fields must not be blank!";
+      setTimeout(() => {
+        this.errorMessage = "";
+      }, 2000);
      }else{
-      this.categoryService.addCategory(categoryForm.value).subscribe(
-        (response) => {
-          console.log('Category Saved', response);
-          //this.employees.push(response);
-          this.router.navigate(["/categories"]);
-        },
-        (error) => {
-          console.log('Category saving failed', error);
-        }
-      );
+      if(this.category){
+      
+        this.categoryService.editCategory(categoryForm.value, this.categoryId).subscribe(
+          (response) => {
+            console.log('Category Updated', response);
+            //this.employees.push(response);
+            this.router.navigate(["/categories"]);
+          },
+          (error) => {
+            console.log('Category Updation failed', error);
+          }
+        );
+       }else{
+        this.categoryService.addCategory(categoryForm.value).subscribe(
+          (response) => {
+            console.log('Category Saved', response);
+            //this.employees.push(response);
+            this.router.navigate(["/categories"]);
+          },
+          (error) => {
+            console.log('Category saving failed', error);
+          }
+        );
+       }
      }
+     
+     
 
      
    }

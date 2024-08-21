@@ -1,6 +1,6 @@
+<h3 class="error-message">{{ errorMessage }}</h3>
 <div class="container">
   <h2>Sign Up</h2>
-  <h3>{{ error }}</h3>
   <form
     novalidate
     #userForm="ngForm"
@@ -36,7 +36,7 @@
       required
     />
     <select name="role" [(ngModel)]="model.role">
-      <option *ngFor="let r of model.role" [ngValue]="r">{{ r }}</option>
+      <option *ngFor="let r of roles" [ngValue]="r">{{ r }}</option>
     </select>
     <button type="submit" class="btn">Sign Up</button>
   </form>

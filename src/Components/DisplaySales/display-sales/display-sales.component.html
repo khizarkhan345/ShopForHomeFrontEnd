@@ -1,1 +1,21 @@
-<p>display-sales works!</p>
+<div class="container">
+  <h2>Sales Report</h2>
+  <div>
+    <label for="reportType">Select Report Type:</label>
+    <select id="reportType" (change)="onReportTypeChange($event)">
+      <option value="thisMonth">This Month</option>
+      <option value="last7days">Last 7 Days</option>
+      <option value="today">Today</option>
+    </select>
+  </div>
+  <div>
+    <div class="sales-report">
+      <label for="totalSales"> Total Sales</label>
+      <p id="totalSales">${{ totalSales }}</p>
+    </div>
+    <div class="sales-report">
+      <label for="totalItems"> Total Items Sold</label>
+      <p id="totalItems">{{ totalItemsSold }}</p>
+    </div>
+  </div>
+</div>

@@ -1,23 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProductdataService } from '../../../DataServices/ProductDataService/product-data.service';
 import { ProductComponent } from '../../Product/product/product.component';
-import { ActivatedRoute } from '@angular/router';
+
 @Component({
-  selector: 'app-home',
+  selector: 'app-garden-and-outdoor',
   standalone: true,
-  imports: [FormsModule, CommonModule, ProductComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  imports: [CommonModule, FormsModule, ProductComponent],
+  templateUrl: './garden-and-outdoor.component.html',
+  styleUrl: './garden-and-outdoor.component.css'
 })
-export class HomeComponent implements OnInit {
+export class GardenAndOutdoorComponent {
 
   products: any[] = [];
   quantity: number = 1;
 
   categoryName: string = "";
-  constructor(private productService: ProductdataService, private route: ActivatedRoute){
+  constructor(private productService: ProductdataService){
     //this.categoryName = this.route.snapshot.paramMap.get('categoryname') || "Not Found";
    
   }
@@ -25,17 +25,14 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.route.paramMap.subscribe(params => {
-      this.categoryName = params.get('categoryname') || '';
-    });
-   
-    console.log(this.categoryName);
-   
-   
     this.productService.getAllProducts().subscribe(
       (response)=> {
         console.log(response);
         this.products = response;
+        this.products = this.products.filter(product => {
+         return product.category.categoryName === 'Garden & Outdoor';
+        })
+        //console.log(this.products);
       },
       (error) => {
         console.log(error);
