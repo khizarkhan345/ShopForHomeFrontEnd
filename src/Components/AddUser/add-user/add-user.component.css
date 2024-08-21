@@ -34,6 +34,14 @@
     font-size: 16px;
 }
 
+.error-message {
+    text-align: center;
+    color: red;
+    font-size: 20px;
+}
+
+
+
 /* Button styles */
 .btn {
     padding: 10px;

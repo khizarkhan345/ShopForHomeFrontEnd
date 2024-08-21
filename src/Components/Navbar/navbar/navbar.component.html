@@ -4,6 +4,18 @@
       <a routerLink="/home">Home</a>
     </li>
     <li *ngIf="isLoggedIn && userRole === 'customer'">
+      <a routerLink="home/walldecor">Wall Decor</a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'customer'">
+      <a routerLink="home/home&fragnances">Home Fragnances</a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'customer'">
+      <a routerLink="home/garden&outdoor">Garden & Outdoor</a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'customer'">
+      <a routerLink="home/kitchen&tabletop">Kitchen & Tabletop</a>
+    </li>
+    <li *ngIf="isLoggedIn && userRole === 'customer'">
       <a routerLink="/cart">Cart</a>
     </li>
     <li *ngIf="isLoggedIn && userRole === 'customer'">

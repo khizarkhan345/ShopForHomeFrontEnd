@@ -76,6 +76,13 @@
 .login a {
     font-weight: 600;
 }
+
+.error-message {
+    text-align: center;
+    color: red;
+    font-size: 20px;
+}
+
 /* Media query for mobile responsiveness */
 @media (max-width: 500px) {
     .container {

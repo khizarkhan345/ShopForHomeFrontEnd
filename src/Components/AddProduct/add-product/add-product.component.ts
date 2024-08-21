@@ -22,6 +22,8 @@ export class AddProductComponent implements OnInit {
 
   Categories: any[] = [];
 
+  errorMessage: string = "";
+
   productId!: string;
   product: any = {};
   selectedFile: File | null = null;
@@ -40,6 +42,7 @@ export class AddProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.productId = this.route.snapshot.paramMap.get('id') || "Not Found";
 
     console.log("ProductId", this.productId);
@@ -111,6 +114,16 @@ export class AddProductComponent implements OnInit {
     console.log(this.model);
     //console.log(this.selectedFile);
 
+    if(productForm.value.title === "" || productForm.value.description === "" || productForm.value.stock === 0 
+      || productForm.value.price === "" || productForm.value.categoryId == "" || this.selectedFile === null
+    ){
+      this.errorMessage="Input field must not be null";
+       setTimeout(() => {
+          this.errorMessage = "";
+       }, 2000);
+    }else{
+
+    
     if(this.productId !== 'Not Found'){
       this.productService.editProduct(this.model, this.productId).subscribe(
         (response) => {
@@ -132,7 +145,7 @@ export class AddProductComponent implements OnInit {
         }
       );
     }
-
+  }
     
   }
 }

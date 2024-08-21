@@ -34,7 +34,11 @@
     box-sizing: border-box;
 }
 
-
+.error-message {
+    text-align: center;
+    color: red;
+    font-size: 20px;
+}
 
 /* Button styles */
 .btn {

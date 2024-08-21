@@ -15,6 +15,10 @@ import { CheckoutComponent } from '../Components/Checkout/checkout/checkout.comp
 import { CouponComponent } from '../Components/Coupon/coupon/coupon.component';
 import { DisplayCouponsComponent } from '../Components/DisplayCoupons/display-coupons/display-coupons.component';
 import { OrderSuccessComponent } from '../Components/OrderSuccess/order-success/order-success.component';
+import { WallDecorComponent } from '../Components/WallDecor/wall-decor/wall-decor.component';
+import { HomeFragnancesComponent } from '../Components/HomeFragnances/home-fragnances/home-fragnances.component';
+import { GardenAndOutdoorComponent } from '../Components/GardenAndOutdoor/garden-and-outdoor/garden-and-outdoor.component';
+import { KitchenAndTableTopComponent } from '../Components/KitchenAndTableTop/kitchen-and-table-top/kitchen-and-table-top.component';
 import { AuthGuard } from '../AuthGuard/AuthGuard.guard';
 import { AdminGuard } from '../AuthGuard/AdminGuard.guard';
 import { CustomerGuard } from '../AuthGuard/CustomerGuard.guard';
@@ -24,6 +28,10 @@ export const routes: Routes = [
     {path: 'login', component: LogInComponent},
     {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: 'home', component: HomeComponent, canActivate: [AuthGuard, CustomerGuard]},
+    {path: 'home/walldecor', component: WallDecorComponent, canActivate: [AuthGuard, CustomerGuard]},
+    {path: 'home/home&fragnances', component: HomeFragnancesComponent, canActivate: [AuthGuard, CustomerGuard]},
+    {path: 'home/garden&outdoor', component: GardenAndOutdoorComponent, canActivate: [AuthGuard, CustomerGuard]},
+    {path: 'home/kitchen&tabletop', component: KitchenAndTableTopComponent, canActivate: [AuthGuard, CustomerGuard]},
     {path: 'cart', component: AddtocartComponent, canActivate: [AuthGuard, CustomerGuard]}, 
     {path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard, CustomerGuard]},
     {path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard, CustomerGuard]},

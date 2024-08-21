@@ -16,14 +16,27 @@ export class SignUpComponent {
   
   model: User;
 
-  error!: string;
+  errorMessage!: string;
+
+  roles: string[] = ["admin", "customer"];
+
   constructor(private userService: UserdataService, private router: Router){
-    this.model = new User("", "", "", "", ["admin", "customer"]);
+    this.model = new User("", "", "", "", "");
   }
 
   onSubmit(userForm: any){
     console.log(userForm.value);
 
+    if(userForm.value.firstName === "" || userForm.value.lastName === "" || userForm.value.email === ""
+      || userForm.value.password === "" || userForm.value.role === ""
+    ){
+
+      this.errorMessage="Input field must not be null";
+      setTimeout(() => {
+         this.errorMessage = "";
+      }, 2000);
+
+    }else{
     this.userService.getASingleUserByEmail(userForm.value.email).subscribe(
       (response) => {
        console.log("response", response);
@@ -39,9 +52,9 @@ export class SignUpComponent {
           }
         );
        }else{
-        this.error = "User with this email already exist";
+        this.errorMessage = "User with this email already exist";
         setTimeout(() => {
-          this.error = "";
+          this.errorMessage = "";
         }, 2000);
         console.log("User with this email already exist");
        }
@@ -51,5 +64,6 @@ export class SignUpComponent {
       }
     )
     
+   }
   }
 }

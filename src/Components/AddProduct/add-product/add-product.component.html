@@ -1,17 +1,55 @@
+<h3 class="error-message">{{ errorMessage }}</h3>
 <div class="container">
-    <h2>Add New Product</h2>
-    <form novalidate  #productForm="ngForm" (ngSubmit)="onSubmit(productForm)" class="form">
-          <input type="text" name="title" [(ngModel)] = "model.title" placeholder="Title" required>
-          <textarea type="text" name="description" [(ngModel)] = "model.description"  placeholder="Description" required>
-          </textarea>
-          <input type="number" name="price" [(ngModel)] = "model.price"  placeholder="Price" required>
-          <input type="number" name="stock" [(ngModel)] = "model.stock"  placeholder="Stock" required>
-          <select  name="categoryId" [(ngModel)] = "model.categoryId">
-            <option *ngFor="let category of Categories" [ngValue]="category.categoryId" >{{category.categoryName}}</option>
-          </select>
-          <input type="file" (change)="onFileSelected($event)" accept="image/*" placeholder="Image">
-          <button type="submit" class="btn">Add</button>
-    </form>
+  <h2>Add New Product</h2>
+  <form
+    novalidate
+    #productForm="ngForm"
+    (ngSubmit)="onSubmit(productForm)"
+    class="form"
+  >
+    <input
+      type="text"
+      name="title"
+      [(ngModel)]="model.title"
+      placeholder="Title"
+      required
+    />
+    <textarea
+      type="text"
+      name="description"
+      [(ngModel)]="model.description"
+      placeholder="Description"
+      required
+    >
+    </textarea>
+    <input
+      type="number"
+      name="price"
+      [(ngModel)]="model.price"
+      placeholder="Price"
+      required
+    />
+    <input
+      type="number"
+      name="stock"
+      [(ngModel)]="model.stock"
+      placeholder="Stock"
+      required
+    />
+    <select name="categoryId" [(ngModel)]="model.categoryId">
+      <option
+        *ngFor="let category of Categories"
+        [ngValue]="category.categoryId"
+      >
+        {{ category.categoryName }}
+      </option>
+    </select>
+    <input
+      type="file"
+      (change)="onFileSelected($event)"
+      accept="image/*"
+      placeholder="Image"
+    />
+    <button type="submit" class="btn">Add</button>
+  </form>
 </div>
-
-

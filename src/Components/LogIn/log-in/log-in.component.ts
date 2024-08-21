@@ -16,24 +16,35 @@ export class LogInComponent {
    
   model: LogIn;
  
-  error!: string;
+  errorMessage!: string;
+
+  roles: string[] = ["admin", "customer"];
 
   constructor(private userService: UserdataService, private router: Router) {
-    this.model = new LogIn("", "", ["Admin", "Customer"]);
+    this.model = new LogIn("", "", "");
   }
 
   onSubmit(logInForm: any){
     console.log(logInForm.value);
 
+    if(logInForm.value.email === "" || logInForm.value.password === ""
+      || logInForm.value.role === ""
+    ){
+
+      this.errorMessage = "Input field must not be null";
+
+      setTimeout(() => {
+        this.errorMessage = "";
+      }, 2000);
+
+    }else {
     this.userService.getASingleUserByEmail(logInForm.value.email).subscribe(
       (response) => {
        console.log("response", response);
        if(response){
         console.log(response);
         if(response.password === logInForm.value.password && response.role.toLowerCase() === logInForm.value.role.toLowerCase()){
-         
-
-         
+               
           if(response.role.toLowerCase() === 'admin'){
              const userData:any = {
             userId: response.userId,
@@ -60,15 +71,15 @@ export class LogInComponent {
           }
           
         }else{
-          this.error = "Invalid Password";
+          this.errorMessage = "Invalid Password";
           setTimeout(() => {
-            this.error = "";
+            this.errorMessage = "";
           }, 2000);
         }
        }else{
-        this.error = "Invalid Email";
+        this.errorMessage = "Invalid Email";
         setTimeout(() => {
-          this.error = "";
+          this.errorMessage = "";
         }, 2000);
         //console.log("User with this email already exist");
        }
@@ -77,5 +88,7 @@ export class LogInComponent {
         console.log(error);
       }
     )
+
+  }
   }
 }
