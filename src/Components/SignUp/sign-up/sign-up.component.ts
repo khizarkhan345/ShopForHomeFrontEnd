@@ -37,10 +37,7 @@ export class SignUpComponent {
       }, 2000);
 
     }else{
-    this.userService.getASingleUserByEmail(userForm.value.email).subscribe(
-      (response) => {
-       console.log("response", response);
-       if(!response){
+    
         this.userService.addUser(userForm.value).subscribe(
           (response) => {
             console.log('Sign Up Successfull', response);
@@ -51,19 +48,12 @@ export class SignUpComponent {
             console.log('Sign Up Failed', error);
           }
         );
-       }else{
-        this.errorMessage = "User with this email already exist";
-        setTimeout(() => {
-          this.errorMessage = "";
-        }, 2000);
-        console.log("User with this email already exist");
-       }
-      },
-      (error) => {
-        console.log(error);
+
       }
-    )
+      
+    
+    
     
    }
-  }
+  
 }
