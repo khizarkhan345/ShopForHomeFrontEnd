@@ -9,19 +9,24 @@ export const USER_TOKEN = "user_token";
 })
 export class UserdataService {
 
-  private loggedIn = new BehaviorSubject<boolean>(false); // Tracks if the user is logged in
-  private userRole = new BehaviorSubject<string>('guest'); // Tracks the user's role
+  private loggedIn = new BehaviorSubject<boolean>(false); 
+  private userRole = new BehaviorSubject<string>('guest'); 
+
+  private jwtToken = new BehaviorSubject<string>('');
 
   currentUserRole = this.userRole.asObservable();
   isLoggedIn = this.loggedIn.asObservable();
   
   private URL = "http://localhost:8080/api/user";
 
+  private authURL =  "http://localhost:8080/api/auth";
+
   constructor(private httpClient: HttpClient, private router: Router) {
     const userData = JSON.parse(localStorage.getItem(USER_TOKEN) || '{}');
     if (userData.userId) {
       this.loggedIn.next(true);
       this.userRole.next(userData.role || 'guest');
+      this.jwtToken.next(userData.jwtToken);
     }
    }
 
@@ -35,8 +40,16 @@ export class UserdataService {
     return this.httpClient.get<any[]>(this.URL+`/${id}`);
   }
 
-  getASingleUserByEmail(email: string): Observable<any> {
+  getASingleUserByEmail(email: any): Observable<any> {
     return this.httpClient.get<any[]>(this.URL+`/userbyemail/${email}`);
+  }
+
+  authenticateUser(userData: any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.httpClient.post<any[]>(this.authURL+"/login", userData, {headers});
   }
 
   addUser(user: any): Observable<any> {
@@ -45,7 +58,7 @@ export class UserdataService {
       'Content-Type': 'application/json'
     });
 
-    return this.httpClient.post<any>(this.URL+'/save', user, { headers });
+    return this.httpClient.post<any>(this.authURL+'/signup', user, { headers });
    }
 
    editUser(user: any, id: string): Observable<any> {

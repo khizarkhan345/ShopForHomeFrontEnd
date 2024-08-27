@@ -38,50 +38,46 @@ export class LogInComponent {
       }, 2000);
 
     }else {
-    this.userService.getASingleUserByEmail(logInForm.value.email).subscribe(
+
+    let userData = {
+      email: logInForm.value.email,
+      password: logInForm.value.password
+    }
+    this.userService.authenticateUser(userData).subscribe(
       (response) => {
        console.log("response", response);
        if(response){
-        console.log(response);
-        if(response.password === logInForm.value.password && response.role.toLowerCase() === logInForm.value.role.toLowerCase()){
-               
+        console.log(response);   
           if(response.role.toLowerCase() === 'admin'){
              const userData:any = {
             userId: response.userId,
-            firstName: response.firstName,
-            lastName: response.lastName,
             email: response.email,
-            role: response.role
+            role: response.role,
+            jwtToken: response.token
           }
+
           this.userService.login(userData);
             this.router.navigate(["/users"]);
           }else{
             const userData:any = {
               userId: response.userId,
-              firstName: response.firstName,
-              lastName: response.lastName,
               email: response.email,
               role: response.role,
               cart: response.cart,
-              coupons: response.coupons,
+              coupons: response.coupon,
               wishlistId: response.wishlist.wishlistId,
+              jwtToken: response.token
             }
             this.userService.login(userData);
             this.router.navigate(["/home"]);
           }
           
-        }else{
-          this.errorMessage = "Invalid Password";
-          setTimeout(() => {
-            this.errorMessage = "";
-          }, 2000);
-        }
        }else{
-        this.errorMessage = "Invalid Email";
+        this.errorMessage = "Invalid Credentials";
         setTimeout(() => {
           this.errorMessage = "";
         }, 2000);
-        //console.log("User with this email already exist");
+        
        }
       },
       (error) => {
